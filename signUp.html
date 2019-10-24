@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="vendors/scroll/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+
 </head>
 
 <body>
@@ -85,7 +86,13 @@
                                 <ul class="list-unstyled mb-0">
                                     <li><i class="ti-angle-double-right"></i> Bank transfer: Sort Code 30-91-56 & Account number 01683976. CRSid as reference. </li>
                                     <li><i class="ti-angle-double-right"></i> Cash to one of the Comittee Members</li>
-                                    <li><i class="ti-angle-double-right"></i> Paypal</li>
+                                    <li><i class="ti-angle-double-right"></i> Paypal  <div class="wpb_text_column wpb_content_element " >
+        <div class="wpb_wrapper">
+            <div style='width:170px'><form target='_blank' action='https://www.paypal.com/cgi-bin/webscr' method='post'><input type='hidden' name='cmd' value='_xclick' /><input type='hidden' name='business' value='EJDKTU6DUCW5Q' /><input type='hidden' name='item_name' value='Membership' /><input type='hidden' name='currency_code' value='GBP' /><input type='hidden' name='amount' value='15.00' /><input type='hidden' name='lc' value='EN_US'><input type='hidden' name='no_note' value=''><input type='hidden' name='paymentaction' value='sale'><input type='hidden' name='return' value='' /><input type='hidden' name='bn' value='WPPlugin_SP'><input type='hidden' name='cancel_return' value='' /><input style='border: none;' class='paypalbuttonimage' type='image' src='https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-medium.png' border='0' name='submit' alt='Make your payments with PayPal. It is free, secure, effective.'><img alt='' border='0' style='border:none;display:none;' src='https://www.paypal.com/EN_US/i/scr/pixel.gif' width='1' height='1'></form></div>
+
+        </div>
+    </div> </li>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -94,30 +101,31 @@
                                 <form action="#" class="login-form sign-in-form">
                                     <div class="form-group text_box">
                                         <label class="f_p text_c f_400">Full Name</label>
-                                        <input type="text" placeholder="Name">
+                                        <input type="text" placeholder="Name" id="fullname">
                                     </div>
                                     <div class="form-group text_box">
                                         <label class="f_p text_c f_400">Email Address</label>
-                                        <input type="text" placeholder="exp351@cam.ac.uk">
+                                        <input type="text" placeholder="exp351@cam.ac.uk" id="email">
                                     </div>
                                      <div class="form-group text_box">
                                         <label class="f_p text_c f_400">University College</label>
-                                        <input type="text" placeholder="College Name">
+                                        <input type="text" placeholder="College Name" id="college">
                                     </div>
                                     <div class="extra mb_20">
                                        <label class="f_p text_c f_400">I paid via</label>
                                        <br>
                                         <div class="checkbox remember">
                                             <label style="padding-right: 20px">
-                                                <input type="checkbox"> Paypal </input>
+                                                <input type="checkbox" id="paypal"> Paypal </input>
                                             </label>
                                             <label>
-                                                <input type="checkbox"> Bank Transfer </input>
+                                                <input type="checkbox" id="bankTransfer"> Bank Transfer </input>
                                             </label>
                                         </div>
                                     </div>
+                                    <p>I agree that my data will be stored according to the CUGS policy.</p>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <button type="submit" class="btn_three">Sign Up (form inactive atm)</button>
+                                        <button type="submit" class="btn_three">Sign Up</button>
                                         
                                     </div>
                                 </form>
@@ -173,6 +181,76 @@
     <script src="js/plugins.js"></script>
     <script src="vendors/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
+   
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+
+
+<script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyCU1FG8is39PvQWxLq8GrELEKgE1v9Spys",
+    authDomain: "germansoc-38dcd.firebaseapp.com",
+    databaseURL: "https://germansoc-38dcd.firebaseio.com",
+    projectId: "germansoc-38dcd",
+    storageBucket: "germansoc-38dcd.appspot.com",
+    messagingSenderId: "29586617132",
+    appId: "1:29586617132:web:d160c77f8a9b65df93b289"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+        //grab a form
+  'use strict';
+  const form = document.querySelector('.sign-in-form');
+
+    //grab an input
+  const inputName = form.querySelector('#fullname');
+  const inputMail = form.querySelector('#email');
+  const inputCollege = form.querySelector('#college');
+  const inputPaypal = form.querySelector('#paypal');
+  const inputBank = form.querySelector('#bankTransfer');
+  console.log(inputBank);
+
+ function firebasePush(input) {
+
+
+    //prevents from braking
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+
+    //push itself
+    var database = firebase.database();
+
+    var mailsRef = database.ref('users').push().set(
+        {
+            mail: inputMail.value,
+            college: inputCollege.value,
+            name: inputName.value,
+            paypal: inputPaypal.checked,
+            bank: inputBank.checked
+        }
+    );
+
+}
+
+//push on form submit
+if (form) {
+    form.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+        firebasePush(inputMail);
+
+        //shows alert if everything went well.
+        return alert('Data Successfully Sent to Realtime Database');
+    })
+}
+
+
+</script>
+
 </body>
 
 </html>
