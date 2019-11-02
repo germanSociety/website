@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+
 </head>
 
 <body>
@@ -86,14 +87,18 @@
                                 <ul class="list-unstyled mb-0">
                                     <li><i class="ti-angle-double-right"></i> Bank transfer: Sort Code 30-91-56 & Account number 01683976. CRSid as reference. </li>
                                     <li><i class="ti-angle-double-right"></i> Cash to one of the Comittee Members</li>
-                                    <li><i class="ti-angle-double-right"></i> Paypal  <div class="wpb_text_column wpb_content_element " >
-        <div class="wpb_wrapper">
+                                 <li>
+        
+     </li>
+                                   
+                                </ul>
+                                <div style="padding: 100px; text-align: center">
+                                <p style="text-align: center"> or pay via paypal</p>
+                                <div class="wpb_wrapper" >
             <div style='width:170px'><form target='_blank' action='https://www.paypal.com/cgi-bin/webscr' method='post'><input type='hidden' name='cmd' value='_xclick' /><input type='hidden' name='business' value='EJDKTU6DUCW5Q' /><input type='hidden' name='item_name' value='Membership' /><input type='hidden' name='currency_code' value='GBP' /><input type='hidden' name='amount' value='15.00' /><input type='hidden' name='lc' value='EN_US'><input type='hidden' name='no_note' value=''><input type='hidden' name='paymentaction' value='sale'><input type='hidden' name='return' value='' /><input type='hidden' name='bn' value='WPPlugin_SP'><input type='hidden' name='cancel_return' value='' /><input style='border: none;' class='paypalbuttonimage' type='image' src='https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-medium.png' border='0' name='submit' alt='Make your payments with PayPal. It is free, secure, effective.'><img alt='' border='0' style='border:none;display:none;' src='https://www.paypal.com/EN_US/i/scr/pixel.gif' width='1' height='1'></form></div>
 
         </div>
-    </div> </li>
-                                   
-                                </ul>
+    </div>
                             </div>
                         </div>
                         <div class="col-lg-7">
@@ -135,12 +140,6 @@
                 </div>
             </div>
         </section>
-       
-        
-
-       
-        
-
 
         <footer class="footer_area footer_area_four f_bg">
            
@@ -181,11 +180,11 @@
     <script src="js/plugins.js"></script>
     <script src="vendors/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
-   
-  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
-<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
 
 
 <script>
@@ -244,8 +243,15 @@ if (form) {
         firebasePush(inputMail);
 
         //shows alert if everything went well.
-        return alert('Data Successfully Sent to Realtime Database');
-    })
+        return Swal.fire({
+  type: 'success',
+  title: 'Success',
+    text:
+    'Welcome to the German Society!',
+  showConfirmButton: false,
+  timer: 2500
+})
+})
 }
 
 
