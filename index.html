@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class="col-lg-7 text-right">
-                        <img class="protype_img wow fadeInRight" data-wow-delay="0.3s" src="img/home4/banner_img.png" alt="">
+                        <img class="protype_img wow fadeInRight" data-wow-delay="0.3s" style="height: 750px" alt="">
                     </div>
                 </div>
                 
@@ -140,19 +140,45 @@
             </div>
         </section>
 
+      
+
      <section class="service_details_area sec_pad" id="membership">
             <div class="container">
+                <h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30" style="text-align: center; padding: 20px">Become a Society Member</h2>
+
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="service_details_img">
-                            <img src="img/breadcrumb/service_details.png" alt="">
+                        <div class="service_details_img" >
+                              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                          <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
+                          </ol>
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img class="d-block w-100" src="img/home4/img1.jpg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="img/home4/img2.jpg" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="img/home4/img3.jpg" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="img/home4/img4.jpg" alt="Fourth slide">
+                            </div>
+                          </div>
+                          
+                        </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="service_details">
-                            <h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30">Become a Society Member</h2>
                             <p class="f_400 mb_50">Become of the largest University Society of Cambridge! We host weekly events reaching from exiting talks and christmas dinners to well known parties such as the october fest. </p>
-                            <ul class="list-unstyled mb-30">
+                            <ul class="list-unstyled mb-20">
                                 <li><i class="ti-arrow-circle-right"></i>Formal Dinners</li>
                                 <li><i class="ti-arrow-circle-right"></i>Priority for our most Successful Events</li>
                                 <li><i class="ti-arrow-circle-right"></i>Sponsor Events</li>
@@ -168,7 +194,6 @@
                 </div>
             </div>
         </section>
-
        
        <section class="partner_logo_area_five" style="margin-top: -50px">
             <div class="container">
@@ -200,12 +225,6 @@
             </div>
         </section>
        
-        
-
-       
-        
-
-
         <footer class="footer_area footer_area_four f_bg">
            
             <div class="footer_bottom">
@@ -246,6 +265,10 @@
     <script src="vendors/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/main.js"></script>
     <script> 
+        $('.carousel').carousel({
+  interval: 4000
+})
+
         $('a[href*="#"]')
   // Remove links that don't actually link to anything
   .not('[href="#"]')
