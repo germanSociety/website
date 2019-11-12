@@ -25,16 +25,51 @@
     @media screen and (min-width:1000px) {
    .toUpper {
      margin-top: -140px;
-   }       
+   } 
+
+   .hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
 }    
 </style>
 </head>
 
-<body>
+<body >
     
     <div class="body_wrapper">
         <header class="header_area">
-            <nav class="navbar navbar-expand-lg menu_one menu_four">
+            <nav class="navbar navbar-expand-lg menu_one menu_four container">
                 <div class="container custom_container p0">
                     <a class="navbar-brand" href="#"><img src="img/logo.png" srcset="img/logo2x.png 2x" alt="logo"></a>
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +95,11 @@
                                 
                             </li>
                             <li class="nav-item"><a title="Pages" class="dropdown-toggle nav-link"  role="button" aria-haspopup="true" aria-expanded="false" href="./index.html#events">Events</a>
-                                
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="./index.html#committee" role="button" aria-haspopup="true" aria-expanded="false">
+                                Committee 
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link dropdown-toggle" href="./index.html#membership" role="button" aria-haspopup="true" aria-expanded="false">
@@ -68,14 +107,9 @@
                                 </a>
                             </li>
                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="./comittee.html" role="button" aria-haspopup="true" aria-expanded="false">
-                                Comittee 
-                                </a>
-                                
-                            </li>
+                           
                         </ul>
-                        <a class="btn_get btn_hover menu_cus" href="#get-app">Download Calender</a>
+                        <a class="btn_get btn_hover menu_cus" target="_blank" style="margin-left: 250px" href="https://www.facebook.com/pg/germansociety/events/?ref=page_internal">Event Calender</a>
                     </div>
                 </div>
             </nav>
@@ -86,7 +120,7 @@
             <div class="container custom_container">
                 <div class="row">
                     <div class="col-lg-5 d-flex align-items-center toUpper">
-                        <div class="agency_content">
+                        <div class="agency_content" style="background-color: rgba(255,255,255,0.9); padding: 20px">
                             <h3 class="f_700 t_color3 mb_40 wow fadeInLeft" data-wow-delay="0.1s" style="color:#A3C1AD; margin: 0">Cambridge University</h3>
                             <h2 class="f_700 t_color3 mb_40 wow fadeInLeft" data-wow-delay="0.3s">German Society</h2>
                             <p class="f_400 l_height28 wow fadeInLeft" style="max-width: 400px" data-wow-delay="0.4s">The Cambridge University German Society was founded in 1908 and consists of students who share a common interest in German society, culture, and history. </p>
@@ -113,7 +147,7 @@
                         <div class="app_fetured_item">
                             <div class="app_item item_one" data-parallax='{"x": 0, "y": 50}'>
                                 <i class="ti-music-alt f_size_40 w_color"></i>
-                                <h6 class="f_p f_400 f_size_16 w_color l_height45">Partys</h6>
+                                <h6 class="f_p f_400 f_size_16 w_color l_height45">Parties</h6>
                             </div>
                             <div class="app_item item_two" data-parallax='{"x": 0, "y": -30}'>
                                 <i class="ti-id-badge f_size_40 w_color"></i>
@@ -140,15 +174,160 @@
             </div>
         </section>
 
-      
+        <div id="committee">
+        <section class="case_study_area sec_pad">
+            <div class="container">
+              <h2 class="f_p f_size_30 f_700 t_color3 l_height45 pr_70 mb-30">Our Committee</h2>
+                <div class="row case_study_item" style="padding: 0px 15px 0px 15px">
+                    <img src="img/new/case/19CU41-1_compressed.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+       <section class="case_study_area sec_pad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_01.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Ciara Gumsheimer</h7>
+                                <p>President</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_02.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Anna Koelle</h7>
+                                <p>President</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_03.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Helena de Guise</h7>
+                                <p>Secretary</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_04.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Dominik Kloepfer</h7>
+                                <p>Treasurer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_05.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Claudia Hoßbach</h7>
+                                <p>Social Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_06.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Udine Abel</h7>
+                                <p>Events Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_07.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Gregor von Lampe</h7>
+                                <p>Speakers Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_08.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Klara Rehm</h7>
+                                <p>Membership Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_09.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Chiara Lehmann</h7>
+                                <p>Sponsorship Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_10.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Martin Lippert</h7>
+                                <p>Events Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="case_study_item">
+                            <img src="img/new/case/case_11.jpg" alt="">
+                            <div class="text" style="padding: 10px;">
+                                
+                                
+                                    <h7 style="height: 40px; font-weight: bold; ">Robin Kohze</h7>
+                                <p>IT Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+     <hr class="hr-text" data-content="OR">
 
      <section class="service_details_area sec_pad" id="membership">
             <div class="container">
-                <h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30" style="text-align: center; padding: 20px">Become a Society Member</h2>
+              <h2 class="f_p f_size_30 f_700 t_color3 l_height45 pr_70 mb-30">Become a Society Member</h2>
 
                 <div class="row">
+                    
                     <div class="col-lg-6">
-                        <div class="service_details_img" >
+                        <div class="service_details">
+                            <p class="f_400 mb_50">Become  a member of the largest University Society of Cambridge! <br> We host weekly events reaching from exciting talks and an annual Christmas Dinner to well known parties such as the Oktoberfest. </p>
+                            <ul class="list-unstyled mb-20">
+                                <li><i class="ti-arrow-circle-right"></i>Formal Dinners</li>
+                                <li><i class="ti-arrow-circle-right"></i>Priority for our most Successful Events</li>
+                                <li><i class="ti-arrow-circle-right"></i>Sponsor Events</li>
+                                <li><i class="ti-arrow-circle-right"></i>Free Film Nights</li>
+                                <li><i class="ti-arrow-circle-right"></i>Reduced Prices at Language Classes</li>
+                            </ul>
+                            <div class="action_btn d-flex align-items-center mt_60">
+                                <a style="" href="./signUp.html" class="btn_hover agency_banner_btn wow fadeInLeft" data-wow-delay="0.5s">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="service_details_img" style="padding-left: 60px" >
                               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                           <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -175,27 +354,11 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="service_details">
-                            <p class="f_400 mb_50">Become of the largest University Society of Cambridge! We host weekly events reaching from exiting talks and christmas dinners to well known parties such as the october fest. </p>
-                            <ul class="list-unstyled mb-20">
-                                <li><i class="ti-arrow-circle-right"></i>Formal Dinners</li>
-                                <li><i class="ti-arrow-circle-right"></i>Priority for our most Successful Events</li>
-                                <li><i class="ti-arrow-circle-right"></i>Sponsor Events</li>
-                                <li><i class="ti-arrow-circle-right"></i>Free Film Nights</li>
-                                <li><i class="ti-arrow-circle-right"></i>Reduced Prices at Language Classes</li>
-                            </ul>
-                            <div class="action_btn d-flex align-items-center mt_60">
-                                <a style="margin-top: -3px" href="./signUp.html" class="btn_hover agency_banner_btn wow fadeInLeft" style="margin-right: 5px" data-wow-delay="0.5s">Sign Up</a>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
        
-       <section class="partner_logo_area_five" style="margin-top: -50px">
+       <section class="partner_logo_area_five container" style="margin-top: -50px">
             <div class="container">
                 <h4 class="f_size_18 f_400 f_p text-center l_height28 mb_70">Our Sponsors</h4>
                 <div class="row partner_info">
