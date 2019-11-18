@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="GermanSociety">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<!-- Fav Icon  -->
+	<link rel="shortcut icon" href="images/favicon.png">
+	<!-- Site Title  -->
+	<title> German Society Admin</title>
+	<!-- Bundle and Base CSS -->
+	<link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=150">
+	<link rel="stylesheet" href="assets/css/style.css?ver=150">
+	<!-- Color Scheme CSS -->
+	<link rel="stylesheet" href="assets/css/theme.css?ver=150" id="theming">
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+
+
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCU1FG8is39PvQWxLq8GrELEKgE1v9Spys",
+	    authDomain: "germansoc-38dcd.firebaseapp.com",
+	    databaseURL: "https://germansoc-38dcd.firebaseio.com",
+	    projectId: "germansoc-38dcd",
+	    storageBucket: "germansoc-38dcd.appspot.com",
+	    messagingSenderId: "29586617132",
+	    appId: "1:29586617132:web:d160c77f8a9b65df93b289"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+	
+</head>
+ 
+<body class="nk-body body-wider bg-light-alt">
+	<div class="nk-wrap">
+    
+        <main class="nk-pages nk-pages-centered bg-theme">
+            
+            <div class="col-lg-6 mgb-r container" style="background-color: white; padding: 30px; margin-top: 10px">
+                            <table class="table" id="userTable">
+                                	<tr>
+                                        <td class="table-head">Name</td>
+                                        <td class="table-head">College</td>
+                                        <td class="table-head">Email</td>
+                                        <td class="table-head">Payment</td> 
+                                        <td class="table-head"></td> 
+                                    </tr>
+                            </table>
+                        </div>
+        </main>
+    
+	</div>
+	<div class="preloader"><span class="spinner spinner-round"></span></div>
+	<script>
+	var userData = firebase.database().ref('users/');
+
+	function paidBy(paypal, bank){
+		if(paypal == true){
+			return "PayPal"
+		} else if(bank == true){
+			return "Bank"
+		} else {
+			return "none"
+		}
+	}
+
+	function acceptMember(memberObject) {
+	  firebase.database().ref('members/').set({
+	    name: memberObject.name,
+	    email: memberObject.mail,
+	    college : memberObject.college
+	  });
+	  console.log("accepted" + memberObject.name);
+	}
+		
+
+	function deleteMember(userId){
+		let userRef = firebase.database.ref('users/' + userId);
+    	userRef.remove();
+    	console.log("deleted" + userId);
+	}
+
+	function addElements(userDB){
+	for(j in userDB) {
+		console.log(j);
+		$(".table").append("<tr style='margin-top: 3px'><td class='table-des'>" + userDB[j].name + "</td><td class='table-des'>" + userDB[j].college + "</td><td class='table-des'>" + userDB[j].mail + "</td><td class='table-des'>" + paidBy(userDB[j].paypal, userDB[j].bank) + "</td><td class='table-des'>" + "<a href='#' onClick='acceptMember(" + userDB[j] + ")' class='btn btn-grad btn-auto btn-sm' style='margin-right: 5px; margin-top: -7px'>accept</a><a href='#' onClick='deleteMember(" + j + ")' class='btn btn-danger btn-auto btn-sm' style='margin-top: -7px'>delete</a>" + "</td></tr>");
+	}}
+
+	let userDB; 
+	userData.on('value', function(snapshot) {
+	  userDB = (snapshot.val());
+	  addElements(userDB);
+	  console.log(userDB);
+
+	});
+
+
+	</script>
+	
+	<!-- JavaScript -->
+	<script src="assets/js/jquery.bundle.js?ver=150"></script>
+	<script src="assets/js/scripts.js?ver=150"></script>
+	<script src="assets/js/charts.js"></script>
+</body>
+</html>
