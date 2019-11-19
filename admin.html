@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="German Society">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<!-- Fav Icon  -->
+	<!-- Site Title  -->
+	<title>German Society Admin Interface</title>
+	<!-- Bundle and Base CSS -->
+	<link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=150">
+	<link rel="stylesheet" href="assets/css/style.css?ver=150">
+	<link rel="stylesheet" href="assets/css/theme.css?ver=150" id="theming">
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+		<script src="assets/js/jquery.bundle.js?ver=150"></script>
+
+
+
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyCU1FG8is39PvQWxLq8GrELEKgE1v9Spys",
+	    authDomain: "germansoc-38dcd.firebaseapp.com",
+	    databaseURL: "https://germansoc-38dcd.firebaseio.com",
+	    projectId: "germansoc-38dcd",
+	    storageBucket: "germansoc-38dcd.appspot.com",
+	    messagingSenderId: "29586617132",
+	    appId: "1:29586617132:web:d160c77f8a9b65df93b289"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+	
+</head>
+ 
+<body class="nk-body body-wider bg-light-alt">
+	<div class="nk-wrap">
+    
+        <main class="nk-pages nk-pages-centered bg-theme">
+            <div class="ath-container">
+               
+                <div class="ath-body">
+                    <h5 class="ath-heading title">German Society<small class="tc-default">Admin Interface</small></h5>
+                        <div class="field-item">
+                            <div class="field-wrap">
+                                <input type="password" class="input-bordered" placeholder="Password" id="userPass">
+                            </div>
+                        </div>
+                        <button onclick="login()" class="btn btn-primary btn-block btn-md">Sign In</button>
+                    <div class="allUsers"> </div> 
+                  	
+                </div>
+                
+            </div>
+            
+        </main>
+    
+	</div>
+	
+	<script>
+		 function login(){
+			let userEmail = "admin@german-society.org";
+			let userPass = document.getElementById("userPass").value;
+			console.log(userEmail);
+			console.log(userPass);
+
+			firebase.auth().signInWithEmailAndPassword(userEmail, userPass)
+			  .then(function(result) {
+			    window.location = 'memberList.html'; 
+			  }).catch(function(error) {
+			    Swal.fire({
+				  icon: 'error',
+				  title: 'Sorry...',
+				  text: "login failure",
+				  showConfirmButton: false,
+				  timer: 2500
+				})
+			  });		  	
+		};
+	</script>
+	<script src="assets/js/scripts.js?ver=150"></script>
+	<script src="assets/js/charts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+</body>
+</body>
+</html>

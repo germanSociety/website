@@ -5,27 +5,16 @@
 	<meta name="author" content="GermanSociety">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
-	<!-- Fav Icon  -->
-	<link rel="shortcut icon" href="images/favicon.png">
-	<!-- Site Title  -->
 	<title> German Society Admin</title>
-	<!-- Bundle and Base CSS -->
 	<link rel="stylesheet" href="assets/css/vendor.bundle.css?ver=150">
 	<link rel="stylesheet" href="assets/css/style.css?ver=150">
-	<!-- Color Scheme CSS -->
 	<link rel="stylesheet" href="assets/css/theme.css?ver=150" id="theming">
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
 
 
-
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-	     https://firebase.google.com/docs/web/setup#available-libraries -->
-
 	<script>
-	  // Your web app's Firebase configuration
 	  var firebaseConfig = {
 	    apiKey: "AIzaSyCU1FG8is39PvQWxLq8GrELEKgE1v9Spys",
 	    authDomain: "germansoc-38dcd.firebaseapp.com",
@@ -35,18 +24,16 @@
 	    messagingSenderId: "29586617132",
 	    appId: "1:29586617132:web:d160c77f8a9b65df93b289"
 	  };
-	  // Initialize Firebase
+
 	  firebase.initializeApp(firebaseConfig);
 	</script>
-	
 </head>
- 
-<body class="nk-body body-wider bg-light-alt">
+<body style="background-color: #fffaf7">
 	<div class="nk-wrap">
     
-        <main class="nk-pages nk-pages-centered bg-theme">
+        <main class=" ">
             
-            <div class="col-lg-6 mgb-r container" style="background-color: white; padding: 30px; margin-top: 10px">
+            <div class="col-lg-10 col-sm-10 container" >
                             <table class="table" id="userTable">
                                 	<tr>
                                         <td class="table-head">Name</td>
@@ -74,35 +61,39 @@
 		}
 	}
 
-	function acceptMember(memberObject) {
-	  firebase.database().ref('members/').set({
-	    name: memberObject.name,
-	    email: memberObject.mail,
-	    college : memberObject.college
-	  });
-	  console.log("accepted" + memberObject.name);
-	}
-		
-
-	function deleteMember(userId){
-		let userRef = firebase.database.ref('users/' + userId);
-    	userRef.remove();
-    	console.log("deleted" + userId);
-	}
+	
 
 	function addElements(userDB){
 	for(j in userDB) {
 		console.log(j);
-		$(".table").append("<tr style='margin-top: 3px'><td class='table-des'>" + userDB[j].name + "</td><td class='table-des'>" + userDB[j].college + "</td><td class='table-des'>" + userDB[j].mail + "</td><td class='table-des'>" + paidBy(userDB[j].paypal, userDB[j].bank) + "</td><td class='table-des'>" + "<a href='#' onClick='acceptMember(" + userDB[j] + ")' class='btn btn-grad btn-auto btn-sm' style='margin-right: 5px; margin-top: -7px'>accept</a><a href='#' onClick='deleteMember(" + j + ")' class='btn btn-danger btn-auto btn-sm' style='margin-top: -7px'>delete</a>" + "</td></tr>");
+		$(".table").append("<tr style='margin-top: 3px'><td class='table-des'>" + userDB[j].name + "</td><td class='table-des'>" + userDB[j].college + "</td><td class='table-des'>" + userDB[j].mail + "</td><td class='table-des'>" + paidBy(userDB[j].paypal, userDB[j].bank) + "</td><td class='table-des'>" + "<a href='#' onClick='acceptMember(`" + j.toString() + "`)' class='btn btn-grad btn-auto btn-sm' style='margin-right: 5px; margin-top: -7px'>accept</a><a href='#' onClick='deleteMember(`" + j.toString() + "`)' class='btn btn-danger btn-auto btn-sm' style='margin-top: -7px'>X</a>" + "</td></tr>");
 	}}
 
 	let userDB; 
 	userData.on('value', function(snapshot) {
 	  userDB = (snapshot.val());
 	  addElements(userDB);
-	  console.log(userDB);
-
 	});
+
+	function deleteMember(userId){
+		console.log("deleted" + userId);
+		let dbPath = firebase.database().ref('users/' + userId);
+		dbPath.remove();
+		location.reload();
+	}
+
+	function acceptMember(userId) {
+	  memberObject = userDB[userId];
+	  firebase.database().ref('members/' + userId).set({
+	    name: memberObject.name,
+	    email: memberObject.mail,
+	    college : memberObject.college
+	  });
+	  let dbPath = firebase.database().ref('users/' + userId);
+	  dbPath.remove();
+	  location.reload();
+
+	}
 
 
 	</script>
