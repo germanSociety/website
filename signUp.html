@@ -183,8 +183,6 @@
    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
-   <script src="https://smtpjs.com/v3/smtp.js"></script>
-
 
 <script>
     var firebaseConfig = {
@@ -240,17 +238,6 @@ if (form) {
     form.addEventListener('submit', function (evt) {
         evt.preventDefault();
         firebasePush(inputMail);
-
-        Email.send({
-		    SecureToken : "e228e604-46fb-41e7-989f-bced3d2e3d32",
-		    To : "rob5@kohze.com",
-		    From : "german-society@kohze.com",
-		    Subject : "Cambridge German Society - Registration Confirmation",
-		    Body : "<html><head> </head> <body> <h2> Cambridge University German Society <h2> <p> We hereby confirm your registration with the german society! </p> </body> </html>"
-		}).then(
-		  message => alert(message)
-		);
-
         //shows alert if everything went well.
         return Swal.fire({
   type: 'success',
