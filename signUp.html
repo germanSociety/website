@@ -87,7 +87,6 @@
                                     <li><i class="ti-angle-double-right"></i> Bank transfer: Sort Code 60-83-71 & Account number 08554479. CRSid as reference. </li>
                                     <li><i class="ti-angle-double-right"></i> Cash to one of the Comittee Members</li>
                                  <li>
-        
      </li>
                                    
                                 </ul>
@@ -184,6 +183,7 @@
    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-database.js"></script>
+   <script src="https://smtpjs.com/v3/smtp.js"></script>
 
 
 <script>
@@ -240,6 +240,16 @@ if (form) {
     form.addEventListener('submit', function (evt) {
         evt.preventDefault();
         firebasePush(inputMail);
+
+        Email.send({
+		    SecureToken : "1b5af24d-4f03-4324-8f60-fd5439d8c9dd",
+		    To : "rob5@kohze.com",
+		    From : "germansociety.cam@gmail.com",
+		    Subject : "Cambridge German Society - Registration Confirmation",
+		    Body : "<html><head> </head> <body> <h2> Cambridge University German Society <h2> <p> We hereby confirm your registration with the german society! </p> </body> </html>"
+		}).then(
+		  message => alert(message)
+		);
 
         //shows alert if everything went well.
         return Swal.fire({
